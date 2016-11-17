@@ -11,6 +11,7 @@ namespace ConsoleApplication1
     {
 
         public static void threadMethod() {
+            Console.WriteLine("second method");
             for (int i = 0; i < 10; i++ )
             {
                 Console.WriteLine("ThreadProc: {0}", i);
@@ -21,16 +22,9 @@ namespace ConsoleApplication1
         public static void Main(string[] args)
         {
             Thread t = new Thread(new ThreadStart(threadMethod));
-
+            t.IsBackground = true;
             t.Start();
-
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine("Main thread: Do some work.");
-                Thread.Sleep(0);
-            }
-
-            t.Join();
+            //Console.WriteLine("main method");
         }
     }
 }
